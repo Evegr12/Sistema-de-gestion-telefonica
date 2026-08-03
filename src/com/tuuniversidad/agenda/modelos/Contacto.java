@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Contacto {
 
-    //Atributos
-    private String nombre;
-    private String apellido;
-    private String telefono;
+    //ATRIBUTOS DE CONTACTO
+   private String nombre;
+   private String apellido;
+   private String telefono;
 
-    //constructor
+   //Constructor
 
     public Contacto(String nombre, String apellido, String telefono) {
         this.nombre = nombre;
@@ -17,9 +17,7 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-
     //METODO GET Y SET
-
 
     public String getNombre() {
         return nombre;
@@ -45,30 +43,26 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    //Validación requisito cuando un contacto es igual a otro o cuando sus nombres son iguales
+    //validamos requisito cuando un contacto es igual a otro o cuando sus nombres son iguales
     @Override
     public boolean equals(Object obj){
         if (this == obj)
             return true;
-        if (obj == null || getClass() != obj.getClass())
+        if (obj == null || getClass() != obj.getClass()) //validacion de seguridad a objetos vacios
             return false;
         Contacto contacto = (Contacto) obj;
         return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
     }
 
-
-    //Hash Code -- convertir nombre en minuscula --
+    //Metodo para convertir el nombre a minuscula
     @Override
     public int hashCode(){
-        return Objects.hash(nombre.toLowerCase(), apellido.toLowerCase());
+        return Objects.hash(nombre.toLowerCase(),apellido.toLowerCase());
     }
-
 
     //METODO toString
-
-    public String toString(String nombre){
-        return "Nombre: " + nombre + " " + apellido + "Telefono: "  + telefono;
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + " " + apellido + " Telefono: " + telefono;
     }
-
-
 }
