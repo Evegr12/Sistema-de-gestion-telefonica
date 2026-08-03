@@ -1,4 +1,7 @@
 package com.tuuniversidad.agenda.excepciones;
 
-public class AgendaLlenaException extends Exception {
+public class AgendaLlenaexception extends Exception{
+    public AgendaLlenaexception (String mensaje){
+        super(mensaje);
+    }
 }
