@@ -29,7 +29,14 @@ public class Agenda {
         if (agendaLlena()) {
             throw new AgendaLlenaexception("");
         }
+<<<<<<< Updated upstream
         
+=======
+
+
+
+
+>>>>>>> Stashed changes
     }
 
 }
