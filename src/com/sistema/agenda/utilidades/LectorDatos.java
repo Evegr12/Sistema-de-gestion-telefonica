@@ -1,4 +1,4 @@
-package com.tuuniversidad.agenda.utilidades;
+package com.sistema.agenda.utilidades;
 
 import java.util.Scanner;
 

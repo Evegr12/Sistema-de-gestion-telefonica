@@ -1,8 +1,8 @@
-package com.tuuniversidad.agenda.logica;
+package com.sistema.agenda.logica;
 
-import com.tuuniversidad.agenda.excepciones.AgendaLlenaException;
-import com.tuuniversidad.agenda.excepciones.ContactoDuplicadoException;
-import com.tuuniversidad.agenda.modelos.Contacto;
+import com.sistema.agenda.excepciones.AgendaLlenaException;
+import com.sistema.agenda.excepciones.ContactoDuplicadoException;
+import com.sistema.agenda.modelos.Contacto;
 import java.util.Arrays;
 
 
@@ -166,11 +166,12 @@ public class Agenda {
 
     }
 
-
+    //Metodo de agenda llena
     public boolean agendaLlena(){
         return contadorContactos >= contactos.length;
     }
 
+    //Metodo de espacios libres en memoria
     public int espaciosLibres(){
         return contactos.length - contadorContactos;
 

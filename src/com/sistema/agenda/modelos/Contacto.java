@@ -1,4 +1,4 @@
-package com.tuuniversidad.agenda.modelos;
+package com.sistema.agenda.modelos;
 
 import java.util.Objects;
 
@@ -63,6 +63,6 @@ public class Contacto {
     //METODO toString
     @Override
     public String toString() {
-        return "Nombre: " + nombre + " " + apellido + " Telefono: " + telefono;
+        return "Nombre: " + nombre + " " + apellido + " Teléfono: " + telefono;
     }
 }
