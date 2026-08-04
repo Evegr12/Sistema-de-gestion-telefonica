@@ -1,7 +1,10 @@
 package com.tuuniversidad.agenda.ui;
 
 import com.tuuniversidad.agenda.logica.Agenda;
+import com.tuuniversidad.agenda.modelos.Contacto;
 import com.tuuniversidad.agenda.utilidades.LectorDatos;
+import com.tuuniversidad.agenda.excepciones.AgendaLlenaException;
+import com.tuuniversidad.agenda.excepciones.ContactoDuplicadoException;
 
 public class Menu {
 
@@ -31,38 +34,57 @@ public class Menu {
 
         while(!salir){
             mostrarOpciones();
-            int opcion = lector.leerEnteros(AZUL + "Ingresa un número del 1 al 9" + RESET);
+            int opcion = lector.leerEnteros(AZUL + "Ingresa un número del 1 al 9: " + RESET);
             System.out.println(AMARILLO + "\n============================================================" + RESET);
 
             switch (opcion){
                 case 1:
                     imprimirTituloSeccion("Añadir nuevo contacto");
                     opcionesInsertarContacto();
-
                     break;
                 case 2:
+                    imprimirTituloSeccion("Verifica si ya existe un contacto");
+                    opcionExisteContacto();
                     break;
                 case 3:
+                    imprimirTituloSeccion("Lista completa de tus contactos");
+                    opcionListaContactos();
                     break;
                 case 4:
+                    imprimirTituloSeccion("Busca un contacto");
+                    opcionBuscarContacto();
                     break;
                 case 5:
+                    imprimirTituloSeccion("Elimina un contacto");
+                    opcionEliminarContacto();
                     break;
                 case 6:
+                    imprimirTituloSeccion("Actualiza un teléfono");
+                    opcionModificarTelefono();
                     break;
                 case 7:
+                    imprimirTituloSeccion("Estado de capacidad (lleno)");
+                    opcionAgendaLlena();
                     break;
                 case 8:
+                    imprimirTituloSeccion("Estado de capacidad (espacios libres)");
+                    opcionEspaciosLibres();
                     break;
                 case 9:
+                    System.out.println("Salir");
+                    salir = true;
+                    System.out.println(VERDE + "Saliendo del programa" + RESET);
                     break;
                 default:
+                    imprimirError("Esa opción no es válida. Elige un número del 1 al 9.");
             }
             System.out.println(AMARILLO + "\n============================================================" + RESET);
         }
         lector.cerrar();
 
     }
+
+    //Metodo para imrpimir el banner principal aesthetic
     private void imprimirBannerPrincipal() {
         System.out.println(AZUL + NEGRILLA);
         System.out.println("   ╔═══════════════════════════════════════════════════╗");
@@ -73,21 +95,23 @@ public class Menu {
         System.out.println("   ╚═══════════════════════════════════════════════════╝");
         System.out.println(RESET);
     }
+
+    //Metodo para configurar el almacenamiento de la agenda
     private void configurarAgendaInicial(){
         System.out.println(CIAN +"Configuración inicial: "+ RESET);
         System.out.println("1.-Capacidad por defecto (10 contactos)");
         System.out.println("2.-Definir una capacidad de almacenamiento personalizada");
 
-        int tipoAgenda = lector.leerEnteros(VERDE+ "Selecciona una configuración 1 o 2" + RESET);
+        int tipoAgenda = lector.leerEnteros(VERDE+ "Selecciona una configuración 1 o 2: " + RESET);
 
         if (tipoAgenda==2) {
-            int capacidad = lector.leerEnteros(VERDE + "Ingresa la capacidad máxima de la agenda" + RESET);
+            int capacidad = lector.leerEnteros(VERDE + "Ingresa la capacidad máxima de la agenda: " + RESET);
             int capacidadSegura = Math.max(1, capacidad);
             agenda = new Agenda(capacidadSegura);
             imprimirExito("Capacidad con éxito " + capacidadSegura);
         }else{
             agenda=new Agenda();
-            imprimirExito("Capacidad por defecto 10 contactos");
+            imprimirExito("Capacidad por defecto 10 contactos.");
 
         }
 
@@ -108,6 +132,8 @@ public class Menu {
         System.out.println(AZUL + "║" + RESET + " " + NEGRILLA + "9." + RESET + " Finalizar y Salir del sistema                          " + AZUL + "║" + RESET);
         System.out.println(AZUL + "╚═════════════════════════════════════════════════════════╝" + RESET);
     }
+
+    //Metodo para Insertar un contacto
     private void opcionesInsertarContacto(){
         String nombre=lector.leerCadena("▶ Ingresa el " + NEGRILLA + "nombre" + RESET + " del contacto: ");
         String apellido=lector.leerCadena("▶ Ingresa el " + NEGRILLA + "apellido" + RESET + " del contacto: ");
@@ -116,36 +142,91 @@ public class Menu {
         Contacto nuevo=new Contacto(nombre,apellido,telefono);
 
         try{
-            System.out.println(VERDE + "Procesado la solicitud de Registro"+ RESET);
+            System.out.println(VERDE + "Procesando la solicitud de Registro"+ RESET);
             agenda.añadirContacto(nuevo);
-            imprimirExito("Completado con exito"+ nombre + " "+ apellido);
+            imprimirExito("Completado con éxito "+ nombre + " "+ apellido);
 
         }catch (AgendaLlenaException e){
             imprimirError(e.getMessage());
-            System.out.println("Sugerencia: Intenta eliminar un contacto antigüo primero");
+            System.out.println("Sugerencia: Intenta eliminar un contacto antigüo primero.");
         }catch (ContactoDuplicadoException e) {
         imprimirError(e.getMessage());
         System.out.println("  Sugerencia: Si deseas actualizar este contacto, usa la opción 6 de modificar teléfono.");
     }
-
-
-
     }
 
+    //Metodo para verificar si existe un contacto 'opción existe contacto'
+    private void opcionExisteContacto(){
+        String nombre = lector.leerCadena("▶ Ingresa el nombre exacto del contacto: ");
+        String apellido = lector.leerCadena("▶ Ingresa el apellido exacto del contacto: ");
 
+        Contacto temp = new Contacto(nombre, apellido, "");
+        System.out.println(AZUL + "Buscando..." + RESET);
 
+        if (agenda.existeContacto(temp)){
+            imprimirExito("Confirmado: el contacto " + nombre + " " + apellido + " sí existe.");
+        } else {
+            imprimirAlerta("el contacto " + nombre + " " + apellido + " no existe.");
+        }
+    }
 
+    //Metodo para traer la lista completa de contactos
+    private void opcionListaContactos(){
+        agenda.listarContactos();
+    }
 
+    //Metodo para buscar un contacto
+    private void opcionBuscarContacto(){
+        String nombre = lector.leerCadena("▶ Ingresa el nombre del contacto que quieres buscar: ");
+        String apellido = lector.leerCadena("▶ Ingresa el apellido del contacto: ");
 
+        System.out.println(AZUL + "Buscando datos..." + RESET);
 
+        agenda.buscarContacto(nombre, apellido);
+    }
 
+    //Metodo para eliminar un contacto
+    private void opcionEliminarContacto(){
+        String nombre = lector.leerCadena("▶ Ingresa el nombre del elemento a eliminar permanentemente: ");
+        String apellido = lector.leerCadena("▶ Ingresa el apellido del contacto a eliminar permanentemente: ");
 
+        String confirmacion = lector.leerCadena( ROJO + "¿Seguro que quieres eliminar el contacto " + nombre + " " + apellido + "? Si/No " + RESET);
+        if (confirmacion.equalsIgnoreCase("Si") || confirmacion.equalsIgnoreCase("S")){
+            System.out.println(AZUL + "Eliminando..." + RESET);
+            Contacto temporal = new Contacto(nombre, apellido, "");
+            agenda.eliminarContacto(temporal);
+        } else {
+            imprimirAlerta("No se eliminó el contacto.");
+        }
+    }
 
+    //Metodo para modificar teléfono
+    private void opcionModificarTelefono(){
+        String nombre = lector.leerCadena("▶ Ingresa el nombre del elemento cuyo teléfono quieres cambiar: ");
+        String apellido = lector.leerCadena("▶ Ingresa el apellido del contacto: ");
+        String nuevoTelefono = lector.leerCadena("Ingresa el nuevo teléfono que tendrá este contacto: ");
 
+        System.out.println(AZUL + "Actualizando el número..."+ RESET);
 
+        agenda.modificarTelefono(nombre, apellido, nuevoTelefono);
+    }
 
+    //Metodo para revisar si el almacenamiento está lleno
+    private void opcionAgendaLlena(){
+        System.out.println(AZUL + "Analizando el almacenamiento..." + RESET);
+        if (agenda.agendaLlena()){
+            imprimirError("El espacio de almacenamiento de la agenda está lleno.");
+        } else {
+            System.out.println(VERDE + "Todavía tienes espacio de almacenamiento." + RESET);
+        }
+    }
 
-
+    //Metodo para revisar si hay espacios libres en el almacenamiento
+    private void opcionEspaciosLibres(){
+        System.out.println(AZUL + "Analizando el almacenamiento libre..." + RESET);
+        int espacioVacio = agenda.espaciosLibres();
+        imprimirExito("Tienes " + espacioVacio + " espacios disponibles en tu agenda.");
+    }
 
 
 

@@ -63,6 +63,6 @@ public class Contacto {
     //METODO toString
     @Override
     public String toString() {
-        return "Nombre: " + nombre + " " + apellido + " Telefono: " + telefono;
+        return "Nombre: " + nombre + " " + apellido + " Teléfono: " + telefono;
     }
 }

@@ -166,11 +166,12 @@ public class Agenda {
 
     }
 
-
+    //Metodo de agenda llena
     public boolean agendaLlena(){
         return contadorContactos >= contactos.length;
     }
 
+    //Metodo de espacios libres en memoria
     public int espaciosLibres(){
         return contactos.length - contadorContactos;
 
