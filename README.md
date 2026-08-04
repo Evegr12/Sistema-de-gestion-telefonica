@@ -19,7 +19,7 @@ El sistema cuenta con las siguientes funcionalidades:
 ```text
 Agenda-Project/
 ├── src/
-│   └── com/tuuniversidad/agenda/
+│   └── com/sistema/agenda/
 │       ├── modelos/
 │       │   └── Contacto.java               # Define un contacto (nombre, teléfono).
 │       ├── logica/
