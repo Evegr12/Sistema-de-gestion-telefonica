@@ -1,4 +1,4 @@
-package com.tuuniversidad.agenda.excepciones;
+package com.sistema.agenda.excepciones;
 
 public class ContactoDuplicadoException extends Exception {
 
