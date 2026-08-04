@@ -1,2 +1,18 @@
 *.class
 bin/
+
+# Configuraciones del editor (IntelliJ / Eclipse / etc.)
+.idea/
+*.iml
+*.iws
+.settings/
+
+# Archivos compilados de Java
+*.class
+out/
+build/
+target/
+
+# Archivos del sistema operativo (Opcional, pero recomendado)
+.DS_Store
+Thumbs.db
