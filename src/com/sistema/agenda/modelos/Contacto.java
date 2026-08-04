@@ -1,4 +1,4 @@
-package com.tuuniversidad.agenda.modelos;
+package com.sistema.agenda.modelos;
 
 import java.util.Objects;
 

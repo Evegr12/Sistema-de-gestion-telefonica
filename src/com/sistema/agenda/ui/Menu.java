@@ -1,10 +1,10 @@
-package com.tuuniversidad.agenda.ui;
+package com.sistema.agenda.ui;
 
-import com.tuuniversidad.agenda.logica.Agenda;
-import com.tuuniversidad.agenda.modelos.Contacto;
-import com.tuuniversidad.agenda.utilidades.LectorDatos;
-import com.tuuniversidad.agenda.excepciones.AgendaLlenaException;
-import com.tuuniversidad.agenda.excepciones.ContactoDuplicadoException;
+import com.sistema.agenda.logica.Agenda;
+import com.sistema.agenda.modelos.Contacto;
+import com.sistema.agenda.utilidades.LectorDatos;
+import com.sistema.agenda.excepciones.AgendaLlenaException;
+import com.sistema.agenda.excepciones.ContactoDuplicadoException;
 
 public class Menu {
 

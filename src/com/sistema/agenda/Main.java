@@ -1,6 +1,6 @@
-package com.tuuniversidad.agenda;
+package com.sistema.agenda;
 
-import com.tuuniversidad.agenda.ui.Menu;
+import com.sistema.agenda.ui.Menu;
 
 public class Main {
     public static void main(String[] args) {
