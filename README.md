@@ -37,17 +37,37 @@ El proyecto aplica programación orientada a objetos, arreglos, validación de d
 * Excepciones personalizadas.
 * Git y GitHub.
 
-## Estructura
+## Estructura del proyecto
 
 ```text
-src/com/sistema/agenda/
-├── modelos/
-├── logica/
-├── excepciones/
-├── utilidades/
-├── ui/
-└── Main.java
+src/
+└── com/
+    └── sistema/
+        └── agenda/
+            ├── modelos/
+            │   └── Contacto.java
+            ├── logica/
+            │   └── Agenda.java
+            ├── excepciones/
+            │   ├── AgendaLlenaException.java
+            │   └── ContactoDuplicadoException.java
+            ├── utilidades/
+            │   └── LectorDatos.java
+            ├── ui/
+            │   └── Menu.java
+            └── Main.java
 ```
+
+| Archivo                           | Descripción                                                                |
+| --------------------------------- | -------------------------------------------------------------------------- |
+| `Contacto.java`                   | Representa un contacto con su nombre y número telefónico.                  |
+| `Agenda.java`                     | Contiene la lógica para agregar, buscar, listar y eliminar contactos.      |
+| `AgendaLlenaException.java`       | Controla el error que ocurre cuando no hay espacio para más contactos.     |
+| `ContactoDuplicadoException.java` | Controla el intento de registrar un contacto que ya existe.                |
+| `LectorDatos.java`                | Lee y valida los datos ingresados por el usuario en la consola.            |
+| `Menu.java`                       | Muestra las opciones disponibles y gestiona la interacción con el usuario. |
+| `Main.java`                       | Inicia la aplicación y ejecuta el menú principal.                          |
+
 
 ## Ejecución
 
