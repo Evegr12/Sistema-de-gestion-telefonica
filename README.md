@@ -1,52 +1,77 @@
-# Agenda-Project
+<div align="center">
 
-Este proyecto es un sistema interactivo en consola desarrollado en Java para gestionar una agenda telefónica. Permite administrar contactos y realizar diversas operaciones sobre ellos mediante un menú de usuario.
+# Sistema de gestión telefónica
 
-## Características
+Aplicación de consola desarrollada en Java para registrar y administrar contactos telefónicos.
 
-El sistema cuenta con las siguientes funcionalidades:
+![Java](https://img.shields.io/badge/Java-8E44AD?style=flat-square\&logo=openjdk\&logoColor=white)
+![POO](https://img.shields.io/badge/POO-C2185B?style=flat-square)
+![Git](https://img.shields.io/badge/Git-6F42C1?style=flat-square\&logo=git\&logoColor=white)
 
-- **Añadir un contacto:** Permite agregar un nuevo contacto asegurando que no haya nombres duplicados. Si la agenda está llena, se notificará al usuario.
-- **Verificar si existe:** Comprueba si un contacto ya existe en la agenda buscando por su nombre.
-- **Listar contactos:** Muestra en pantalla todos los contactos guardados actualmente.
-- **Buscar contacto:** Busca un contacto específico por su nombre y muestra su número de teléfono.
-- **Eliminar contacto:** Elimina un contacto de la agenda e indica por pantalla si la operación fue exitosa.
-- **Estado de la agenda:** Indica si la agenda se encuentra llena.
-- **Espacios libres:** Muestra cuántos contactos más se pueden seguir agregando.
+</div>
 
-## Estructura del Proyecto
+---
+
+## Descripción
+
+Sistema desarrollado durante un hackathon colaborativo para gestionar una agenda telefónica desde la consola.
+
+El proyecto aplica programación orientada a objetos, arreglos, validación de datos, manejo de excepciones y organización del código por paquetes.
+
+## Funcionalidades
+
+* Agregar contactos.
+* Consultar si un contacto existe.
+* Mostrar todos los contactos.
+* Buscar contactos por nombre.
+* Eliminar contactos.
+* Consultar espacios disponibles.
+* Validar datos ingresados por el usuario.
+* Controlar contactos duplicados y agenda llena.
+
+## Tecnologías
+
+* Java.
+* Programación orientada a objetos.
+* Arreglos.
+* Excepciones personalizadas.
+* Git y GitHub.
+
+## Estructura
 
 ```text
-Agenda-Project/
-├── src/
-│   └── com/sistema/agenda/
-│       ├── modelos/
-│       │   └── Contacto.java               # Define un contacto (nombre, teléfono).
-│       ├── logica/
-│       │   └── Agenda.java                 # Gestiona el arreglo de contactos y la lógica de negocio.
-│       ├── excepciones/                    # (NUEVO) Manejo robusto de errores
-│       │   ├── AgendaLlenaException.java
-│       │   └── ContactoDuplicadoException.java
-│       ├── utilidades/                     # (NUEVO) Clases de apoyo
-│       │   └── LectorDatos.java            # Para validar y leer la entrada del usuario por consola sin que el programa colapse.
-│       ├── ui/                             # (NUEVO) Capa de presentación
-│       │   └── Menu.java                   # Contiene toda la lógica visual (textos) del menú y el switch/case.
-│       └── Main.java                       # Punto de entrada. Solo llama a la inicialización de la UI.
-├── test/                                   # (NUEVO) Preparado para futuras pruebas unitarias.
-├── README.md                               # Documentación del proyecto.
-└── .gitignore                              # Archivos ignorados por Git.
+src/com/sistema/agenda/
+├── modelos/
+├── logica/
+├── excepciones/
+├── utilidades/
+├── ui/
+└── Main.java
 ```
 
-## Cómo ejecutarlo
+## Ejecución
 
-1. Asegúrate de tener **Java (JDK)** instalado en tu computadora.
-2. Abre una terminal en la ruta principal del proyecto (`Agenda-Project`).
-3. Compila el código fuente (los archivos compilados irán a una carpeta `bin`):
-   ```bash
-   mkdir bin
-   javac -d bin src/com/tuuniversidad/agenda/**/*.java src/com/tuuniversidad/agenda/*.java
-   ```
-4. Ejecuta el programa principal:
-   ```bash
-   java -cp bin com.tuuniversidad.agenda.Main
-   ```
+### Requisitos
+
+* Java JDK 17 o superior.
+* Git.
+* Un IDE compatible con Java.
+
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/Evegr12/Sistema-de-gestion-telefonica.git
+cd Sistema-de-gestion-telefonica
+```
+
+Abre el proyecto en tu IDE y ejecuta:
+
+```text
+src/com/sistema/agenda/Main.java
+```
+
+## Trabajo colaborativo
+
+El proyecto fue desarrollado por un equipo de seis integrantes mediante ramas individuales e integración de cambios con Git y GitHub.
+
+[Ver colaboradores](https://github.com/Evegr12/Sistema-de-gestion-telefonica/graphs/contributors)
